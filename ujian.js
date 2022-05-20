@@ -1,6 +1,6 @@
 window.onblur = () => {
     confirm('Anda terkena illegal access!!!')
-    location.href = '/ilegal.html'
+    location.href = './ilegal.html'
 }
 
 let video = document.getElementById('video')
