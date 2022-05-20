@@ -1,0 +1,370 @@
+/* Reset CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Uitilty Classes */
+
+h1 {
+    font-size: 2rem;
+    letter-spacing: 1.6px;
+    word-spacing: 2px;
+    font-weight: bold;
+}
+
+h2 {
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+a {
+    cursor: pointer;
+}
+
+video {
+    aspect-ratio: 16/9;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-colored {
+    color: cornflowerblue;
+}
+
+.p1 {
+    padding: 1em;
+}
+
+.mb1 {
+    margin-bottom: 1em;
+}
+
+.mb4 {
+    margin-bottom: 4em;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.gray {
+    color:rgb(73, 73, 73);
+}
+
+.spacing-normal {
+    letter-spacing: 0.5px;
+}
+
+.text-white {
+    color: white;
+}
+
+/* Components */
+
+.mulaiujian {
+    text-decoration: none;
+    color: white;
+    background-color: blueviolet;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    animation: naikbawah 1s ease-in-out alternate infinite;
+}
+
+.float {
+    width: 100%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.float.appear {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center;
+    transition: all 0.5s ease-in-out;
+    pointer-events: all;
+}
+
+.popup {
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translatex(-50%);
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    outline: 1px solid rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out;
+}
+
+.popup h2 {
+    padding: 0.5em;
+}
+
+.kotak {
+    width: 50px;
+    height: 50px;
+    background-color: greenyellow;
+    border-radius: 10px;
+    animation: muter 5s alternate infinite ease-in-out;
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin-top: 1em;
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.btn * {
+    text-decoration: none;
+    background-color: springgreen;
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 1em;
+    color: black;
+    letter-spacing: 1.5px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.persiapan {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sponsors {
+    background-color: rgb(30, 41, 59);
+}
+
+.mneersponsor {
+    display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-flow: row dense;
+}
+
+.mneersponsor>* {
+    width: 300px;
+    height: 200px;
+}
+
+.holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .holder .get-it-on-github {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-family: "Roboto";
+    color: #55606E;
+  }
+  
+  .audio.green-audio-player {
+    width: 400px;
+    min-width: 300px;
+    height: 56px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 4px;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: #fff;
+  }
+  .audio.green-audio-player .play-pause-btn {
+    display: none;
+    cursor: pointer;
+  }
+  .audio.green-audio-player .spinner {
+    width: 18px;
+    height: 18px;
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/loading.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: spin 0.4s linear infinite;
+  }
+  .audio.green-audio-player .slider {
+    flex-grow: 1;
+    background-color: #D8D8D8;
+    cursor: pointer;
+    position: relative;
+  }
+  .audio.green-audio-player .slider .progress {
+    background-color: #44BFA3;
+    border-radius: inherit;
+    position: absolute;
+    pointer-events: none;
+  }
+  .audio.green-audio-player .slider .progress .pin {
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    background-color: #44BFA3;
+    position: absolute;
+    pointer-events: all;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.32);
+  }
+  .audio.green-audio-player .controls {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    color: #55606E;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  .audio.green-audio-player .controls .slider {
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 2px;
+    height: 4px;
+  }
+  .audio.green-audio-player .controls .slider .progress {
+    width: 0;
+    height: 100%;
+  }
+  .audio.green-audio-player .controls .slider .progress .pin {
+    right: -8px;
+    top: -6px;
+  }
+  .audio.green-audio-player .controls span {
+    cursor: default;
+  }
+  .audio.green-audio-player .volume {
+    position: relative;
+  }
+  .audio.green-audio-player .volume .volume-btn {
+    cursor: pointer;
+  }
+  .audio.green-audio-player .volume .volume-btn.open path {
+    fill: #44BFA3;
+  }
+  .audio.green-audio-player .volume .volume-controls {
+    width: 30px;
+    height: 135px;
+    background-color: rgba(0, 0, 0, 0.62);
+    border-radius: 7px;
+    position: absolute;
+    left: -3px;
+    bottom: 52px;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+  }
+  .audio.green-audio-player .volume .volume-controls.hidden {
+    display: none;
+  }
+  .audio.green-audio-player .volume .volume-controls .slider {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    width: 6px;
+    border-radius: 3px;
+  }
+  .audio.green-audio-player .volume .volume-controls .slider .progress {
+    bottom: 0;
+    height: 100%;
+    width: 6px;
+  }
+  .audio.green-audio-player .volume .volume-controls .slider .progress .pin {
+    left: -5px;
+    top: -8px;
+  }
+
+  .soals {
+      display: none;
+  }
+
+  .soal {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotateZ(0);
+    }
+    to {
+      transform: rotateZ(1turn);
+    }
+  }
+
+/* Animations */
+
+@keyframes muter {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes naikbawah {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(5px);
+    }
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 600px) {
+    .sponsors {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popup {
+        width: 80%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+  }
