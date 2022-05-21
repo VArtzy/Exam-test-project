@@ -1,7 +1,7 @@
-window.onblur = () => {
-    confirm('Anda terkena illegal access!!!')
-    location.href = './ilegal.html'
-}
+// window.onblur = () => {
+//     confirm('Anda terkena illegal access!!!')
+//     location.href = './ilegal.html'
+// }
 
 let video = document.getElementById('video')
 if(navigator.mediaDevices.getUserMedia) {
@@ -18,8 +18,118 @@ if(navigator.mediaDevices.getUserMedia) {
     console.log('Nyalain blok kameranya, buka aksesnya, jangan lupa cek source kamera kamu.');
 }
 
+// Waktu ujian
+
+function Waktu() {
+
+const countToDate = new Date().setMinutes(new Date().getMinutes() + 10)
+let previousTimeBetweenDates
+
+let interval = setInterval(() => {
+  const currentDate =  new Date()
+  const timeBetweenDates = Math.ceil((countToDate - currentDate) / 1000)
+
+  flipAllCards(timeBetweenDates)
+
+  previousTimeBetweenDates = timeBetweenDates
+  
+  if (previousTimeBetweenDates < 0) {
+    alert('Mneer entek wektune')
+    location.href = './index.html'
+    clearInterval(interval)
+  }
+}, 250)
+
+function flipAllCards(time) {
+  const seconds = time % 60
+  const minutes = Math.floor((time / 60) % 60)
+  
+  flip(document.querySelector("[data-minutes-tens]"), Math.floor(minutes / 10));
+  flip(document.querySelector("[data-minutes-ones]"), minutes % 10);
+  flip(document.querySelector("[data-seconds-tens]"), Math.floor(seconds / 10));
+  flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
+}
+
+function flip(flipCard, newNumber) {
+  const topHalf = flipCard.querySelector('.top')
+  const startNumber = parseInt(topHalf.textContent)
+  if(newNumber === startNumber) return
+
+  const bottomHalf = flipCard.querySelector('.bottom')
+  const topFlip = document.createElement("div")
+  topFlip.classList.add('top-flip')
+  const bottomFlip = document.createElement("div")
+  bottomFlip.classList.add('bottom-flip')
+
+  top.textContent = startNumber
+  bottomHalf.textContent = startNumber
+  topFlip.textContent = startNumber
+  bottomFlip.textContent = newNumber
+
+  topFlip.addEventListener("animationstart", e => {
+    topHalf.textContent = newNumber
+  })
+
+  topFlip.addEventListener("animationend", e => {
+    topFlip.remove()
+  })
+
+  bottomFlip.addEventListener("animationend", e => {
+    bottomHalf.textContent = newNumber
+    bottomFlip.remove()
+})
+  flipCard.append(topFlip, bottomFlip)
+}
+
+}
+
+// Sistem penilaian
+
+let nilai = 0;
+let jawabanUser = [];
+const radioBenar = document.querySelectorAll('#benar');
+const submit = document.querySelector('.submit');
+
+function setCookie(name,value,days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+window.onclick = e => {
+
+  jawabanUser = [];
+
+  radioBenar.forEach(el => {
+      jawabanUser.push(el.checked);
+  });
+  
+
+  console.log(jawabanUser)
+} 
+
+submit.addEventListener('click', () => {
+
+  nilai = 0
+
+  jawabanUser.forEach(j => {
+    if(j){
+      nilai += 100
+    }
+  })
+
+  console.log(nilai);
+
+  setCookie('nilai', nilai, 7)
+})
+
 // Audio setting
 var soals = document.querySelector('.soals');
+let alrPlay = false;
 var audioPlayer = document.querySelector('.green-audio-player');
 var playPause = audioPlayer.querySelector('#playPause');
 var playpauseBtn = audioPlayer.querySelector('.play-pause-btn');
@@ -155,11 +265,11 @@ function getCoefficient(event) {
   return K;
 }
 
-function rewind(event) {
-  if (inRange(event)) {
-    player.currentTime = player.duration * getCoefficient(event);
-  }
-}
+// function rewind(event) {
+//     if (inRange(event)) {
+//       player.currentTime = player.duration * getCoefficient(event);
+//   }
+// }
 
 function changeVolume(event) {
   if (inRange(event)) {
@@ -174,13 +284,18 @@ function formatTime(time) {
 }
 
 function togglePlay() {
-  if (player.paused) {
-    playPause.attributes.d.value = "M0 0h6v24H0zM12 0h6v24h-6z";
-    player.play();
-    soals.style['display'] = 'block';
-  } else {
-    playPause.attributes.d.value = "M18 12L0 24V0";
-    player.pause();
+  if(alrPlay === false) {
+    if (player.paused) {
+      playPause.attributes.d.value = "M0 0h6v24H0zM12 0h6v24h-6z";
+      player.play();
+      soals.style['display'] = 'block';
+      alrPlay = true;
+      Waktu();
+    } else {
+      playPause.attributes.d.value = "M18 12L0 24V0";
+      player.pause();
+      alrPlay = true;
+    }
   }
 }
 
