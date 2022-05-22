@@ -412,6 +412,10 @@ video {
     color: black;
     border-radius: 10px;
   }
+
+  .btn-ulangi {
+    margin: 10px;
+  }
   
   @keyframes spin {
     from {
@@ -460,5 +464,9 @@ video {
 
     .btn {
         width: 100%;
+    }
+
+    .btn-ulangi {
+      margin: 0;
     }
   }

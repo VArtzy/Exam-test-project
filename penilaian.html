@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Kemahiran Berbahasa Pemrogramman | Penilaian</title>
+    <script defer src="nilai.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="p1 mb1 text-center">Nilai Ujian Kemahiran Berbahasa Pemrogramman</h1>
+    <table style="display: flex; justify-content: center;" class="table table-bordered">
+        <tbody><tr>
+            <th colspan="2" class="text-center">SKOR AKHIR</th>
+            <th rowspan="3" width="5%" style="vertical-align:middle;">
+                <span id="nilai" style="color:#00206c; font-size:50pt; text-shadow: 0 0 10px #FFFFFF;">
+                    0                                                                    </span>
+            </th>
+        </tr>
+        <tr>
+            <td>Peringkat</td>
+            <th id="peringkat"></th>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center; vertical-align:middle;">
+             <a style="width: 100%" class="btn btn-lg btn-info btn-lg" href="./sertifikat.html" target="_blank">Sertifikat</a>
+                                                                                </td>
+        </tr>
+    </tbody></table>
+
+    <a style="position: fixed; bottom: 0; right: 0;" class="btn btn-danger btn-ulangi" onclick="reset()">Ulangi Ujian</a>
+</body>
+</html>

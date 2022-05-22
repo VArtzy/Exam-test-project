@@ -1,7 +1,7 @@
-// window.onblur = () => {
-//     confirm('Anda terkena illegal access!!!')
-//     location.href = './ilegal.html'
-// }
+window.onblur = () => {
+    confirm('Anda terkena illegal access!!!')
+    location.href = './ilegal.html'
+}
 
 let video = document.getElementById('video')
 if(navigator.mediaDevices.getUserMedia) {
@@ -86,9 +86,11 @@ function flip(flipCard, newNumber) {
 // Sistem penilaian
 
 let nilai = 0;
+let dijawab = 0;
 let jawabanUser = [];
 const radioBenar = document.querySelectorAll('#benar');
 const submit = document.querySelector('.submit');
+const radio = document.querySelectorAll('input');
 
 function setCookie(name,value,days) {
   var expires = "";
@@ -103,28 +105,62 @@ function setCookie(name,value,days) {
 window.onclick = e => {
 
   jawabanUser = [];
+  dijawab = 0;
 
   radioBenar.forEach(el => {
       jawabanUser.push(el.checked);
   });
+
+  radio.forEach(r => {
+    if(r.checked) {
+      dijawab++
+    }
+  })
+  
+  console.log(dijawab)
   
 
   console.log(jawabanUser)
 } 
 
 submit.addEventListener('click', () => {
-
-  nilai = 0
-
-  jawabanUser.forEach(j => {
-    if(j){
-      nilai += 100
-    }
-  })
-
-  console.log(nilai);
-
-  setCookie('nilai', nilai, 7)
+  if(dijawab === 5) {
+    Swal.fire({
+      title: 'Yakin mengirim jawaban?',
+      text: "Kamu tidak dapat mengulangi kecuali melakukan re-test.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yakin'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        nilai = 0
+    
+        jawabanUser.forEach(j => {
+          if(j){
+            nilai += 100
+          }
+        })
+      
+        console.log(nilai);
+      if(nilai) {
+        setCookie('nilai', nilai, 7)
+      } else {
+        setCookie('nilai', '0', 7)
+      }
+        
+  
+        location.href = './penilaian.html'
+      }
+    })
+  } else {
+    Swal.fire({
+      title: 'Belum menjawab semua soal!',
+      icon: 'error',
+      confirmButtonText: 'OK !'
+    })
+  }
 })
 
 // Audio setting
