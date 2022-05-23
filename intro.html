@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ujian Kemahiran Berbahasa Pemrogramman</title>
     <link rel="stylesheet" href="intro.css">
+    <noscript>
+        <style>
+            body *{ /*hides all elements inside the body*/
+                display: none;
+            }
+            h1{ /* even if this h1 is inside head tags it will be first hidden, so we have to display it again after all body elements are hidden*/
+                display: block;
+            }
+        </style>
+        <h1>Mneer ngapain matiin js</h1>
+        <meta http-equiv="refresh" content="0; url=./ilegal.html" />
+    </noscript>
 </head>
 <body>
     <img src="img/Logo Kemendikbud Laluahmad.com.png" alt="Kemendikbuds">
@@ -32,9 +44,17 @@
         location.href = './penilaian.html'
         }
 
+        let audio = new Audio('src/AUD-20220523-WA0009.mp3');
+        audio.play();
+
         setTimeout(() => {
             location.href = './ujian.html'
         }, 7000)
+
+        window.onblur = () => {
+        confirm('Anda terkena illegal access!!!')
+        location.href = './ilegal.html'
+        }
     </script>
 </div>
 </body>
